@@ -1,0 +1,49 @@
+package br.com.michel.android.caraoucoroa;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+
+public class Resultado extends AppCompatActivity {
+
+    private ImageView imageViewBtnVoltar;
+    private ImageView imageR;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_resultado);
+
+        imageR = findViewById(R.id.imageR);
+
+
+        Bundle dados = getIntent().getExtras();
+        int numero = dados.getInt("numero");
+
+        if (numero == 0 ){
+
+            imageR.setImageResource(R.drawable.moeda_cara);
+        }
+        else {
+
+            imageR.setImageResource(R.drawable.moeda_coroa);
+
+        }
+
+        imageViewBtnVoltar = findViewById(R.id.imageBtnVoltar);
+
+        imageViewBtnVoltar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                finish();
+
+
+            }
+        });
+
+    }
+}
